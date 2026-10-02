@@ -1,0 +1,143 @@
+Panels:
+  - Class: rviz_common/Displays
+    Name: Displays
+    Property Tree Widget:
+      Expanded:
+        - /Original1
+        - /Filtered1
+        - /Erkannte Objekte1
+        - /ZED Kamera1
+      Splitter Ratio: 0.5
+    Tree Height: 700
+  - Class: rviz_common/Views
+    Name: Views
+    Splitter Ratio: 0.5
+
+Visualization Manager:
+  Class: ""
+  Displays:
+
+    # ── Panel 1: LiDAR (3D-Viewport) ────────────────────────────────────────
+
+    - Class: rviz_default_plugins/PointCloud2
+      Name: Original
+      Enabled: true
+      Topic:
+        Value: /microvision/pointcloud
+        Depth: 5
+        History Policy: Keep Last
+        Reliability Policy: Best Effort
+        Durability Policy: Volatile
+      Color Transformer: FlatColor
+      Color: 180; 180; 180
+      Style: Points
+      Size (Pixels): 1
+      Decay Time: 0
+      Selectable: true
+      Position Transformer: XYZ
+      Use Fixed Frame: true
+      Value: true
+
+    - Class: rviz_default_plugins/PointCloud2
+      Name: Filtered
+      Enabled: true
+      Topic:
+        Value: /microvision/pointcloud/filtered
+        Depth: 5
+        History Policy: Keep Last
+        Reliability Policy: Best Effort
+        Durability Policy: Volatile
+      Color Transformer: FlatColor
+      Color: 50; 220; 80
+      Style: Points
+      Size (Pixels): 2
+      Decay Time: 0
+      Selectable: true
+      Position Transformer: XYZ
+      Use Fixed Frame: true
+      Value: true
+
+    - Class: rviz_default_plugins/MarkerArray
+      Name: Erkannte Objekte
+      Enabled: true
+      Topic:
+        Value: /dynamic_object_filter/boxes
+        Depth: 10
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Durability Policy: Volatile
+      Value: true
+
+    # ── Panel 2: ZED Kamera (eigenes Bildfenster im RViz-Fenster) ────────────
+    # Camera erzeugt einen zweiten visuellen Viewport neben dem 3D-View.
+    # /zed/zed_node/obj_det/objects (zed_msgs/ObjectsStamped) benötigt das
+    # zed_rviz2-Plugin und ist daher hier nicht direkt einbindbar.
+
+    - Class: rviz_default_plugins/Camera
+      Name: ZED Kamera
+      Enabled: true
+      Topic:
+        Value: /zed/zed_node/rgb/image_rect_color
+        Depth: 1
+        History Policy: Keep Last
+        Reliability Policy: Best Effort
+        Durability Policy: Volatile
+      Far Clip Distance: 100
+      Near Clip Distance: 0.01
+      Overlay Alpha: 0.5
+      Zoom Factor: 1.0
+      Value: true
+
+    # ── Debug ────────────────────────────────────────────────────────────────
+
+    - Class: rviz_default_plugins/TF
+      Name: TF
+      Enabled: false
+      Frame Timeout: 15
+      Marker Scale: 0.5
+      Show Arrows: true
+      Show Axes: true
+      Show Names: true
+      Value: false
+
+  Enabled: true
+  Global Options:
+    Background Color: 30; 30; 30
+    Fixed Frame: MicroVisionScanTF
+    Frame Rate: 30
+
+  Tools:
+    - Class: rviz_default_plugins/Interact
+      Hide Inactive Objects: true
+    - Class: rviz_default_plugins/MoveCamera
+    - Class: rviz_default_plugins/Select
+
+  Value: true
+
+  Views:
+    Current:
+      Class: rviz_default_plugins/Orbit
+      Distance: 40
+      Focal Point:
+        X: 0
+        Y: 0
+        Z: 0
+      Pitch: 1.2
+      Yaw: 3.14
+      Name: Vogelperspektive
+      Near Clip Distance: 0.1
+      Target Frame: MicroVisionScanTF
+      Value: Orbit (rviz_default_plugins)
+    Saved: ~
+
+Window Geometry:
+  Displays:
+    collapsed: false
+  Views:
+    collapsed: false
+  ZED Kamera:
+    collapsed: false
+  Height: 900
+  Width: 1600
+  X: 50
+  Y: 50
